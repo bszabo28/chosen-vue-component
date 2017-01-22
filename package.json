@@ -1,0 +1,17 @@
+{
+  "name": "chosen-vue-component",
+  "version": "1.0.0",
+  "description": "",
+  "main": "chosen.vue",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Szabó Balázs",
+  "license": "ISC",
+  "devDependencies": {},
+  "dependencies": {
+    "chosen-js": "^1.6.2",
+    "jquery": "^3.1.1",
+    "lodash": "^4.17.4"
+  }
+}
