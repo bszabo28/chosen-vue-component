@@ -55,6 +55,26 @@
 		'close',
 	];
 
+	const options = [
+		'allow_single_deselect',
+		'disable_search',
+		'disable_search_threshold',
+		'enable_split_word_search',
+		'inherit_select_classes',
+		'max_selected_options',
+		'no_results_text',
+		'placeholder_text_multiple',
+		'placeholder_text_single',
+		'search_contains',
+		'single_backstroke_delete',
+		'width',
+		'display_disabled_options',
+		'display_selected_options',
+		'include_group_label_in_selected',
+		'max_shown_results',
+		'case_sensitive_search',
+	];
+
 	export default {
 
 		props: [
@@ -85,7 +105,17 @@
 			// futnia a chosen:updated triggernek
 			list_(){
 				this.updated();
-			}
+			},
+
+			multiple_(){				
+				this.restart();
+			},
+
+			...(_.transform(options,(acc,v) =>{
+				acc[`options.${v}`] = function(){
+					this.restart();
+				};
+			},{}))
 		},
 
 		computed: {
@@ -99,19 +129,22 @@
 
 			// true vagy false
 			multiple_(){
-				return !!this.multiple;
+				return this.multiple;
 			},
 
 			options_() {
-				var options = this.options || {};
-
-				options.width = options.width || defaultWidth;
-
-				return options;
+				return this.options || {};
 			}
 		},
 
 		methods: {
+
+			restart(){
+				this.$nextTick(() =>{
+					this.select.chosen("destroy");
+					this.select.chosen(this.options_);
+				});
+			},
 
 			changed(e,{selected,deselected}){
 
@@ -157,6 +190,8 @@
 
 			// Chosen inicializálása
 			this.select.chosen(this.options_);
+
+			console.log(this);
 		}
 	};
 </script>
