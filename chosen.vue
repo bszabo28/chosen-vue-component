@@ -28,6 +28,7 @@
 
 	import jQuery from 'jquery';
 	import _ from 'lodash';
+	import Vue from 'vue';
 
 	window.jQuery = jQuery;
 
@@ -104,10 +105,20 @@
 			// Lista változásakor le kell
 			// futnia a chosen:updated triggernek
 			list_(){
+
+				// Frissítenem kell a kijelölt elemek tömbjét
+				// Chosen az options selected tulajdonságán
+				// keresztül értesül mi van kijelölve 
+				this.current = _.chain(this.list)
+					.filter(i => i.selected)
+					.map('value')
+				.value();
+
 				this.updated();
 			},
 
-			multiple_(){				
+			multiple_(){	
+				this.current = [];							
 				this.restart();
 			},
 
@@ -146,9 +157,17 @@
 				});
 			},
 
+			// Csak a komponens által kiváltott változáskor
+			// Fut le
 			changed(e,{selected,deselected}){
 
+				if(!this.multiple){
+					this.current = [];
+				}
+
 				if(selected){
+					// https://vuejs.org/v2/guide/list.html#Array-Change-Detection
+					// Ennek ellenére nem reaktív !!
 					this.current.push(selected);
 				}
 
@@ -190,8 +209,6 @@
 
 			// Chosen inicializálása
 			this.select.chosen(this.options_);
-
-			console.log(this);
 		}
 	};
 </script>
