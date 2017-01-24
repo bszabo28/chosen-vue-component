@@ -14,6 +14,7 @@
 	<select
 		:multiple="multiple_"
 		:data-placeholder="dataPlaceholder">
+		<option></option>
 		<option
 			v-for="item in list_"
 			:value="item.value"
@@ -118,7 +119,13 @@
 			},
 
 			multiple_(){	
-				this.current = [];							
+
+				if(!this.multiple){
+					this.current = [this.select.find('option:selected').val()];
+				}
+				else{
+					this.current = [];				
+				}
 				this.restart();
 			},
 
@@ -140,6 +147,7 @@
 
 			// true vagy false
 			multiple_(){
+
 				return this.multiple;
 			},
 
@@ -150,9 +158,17 @@
 
 		methods: {
 
-			restart(){
+			getCurrents(){
+				return this.current;
+			},
+
+			restart(init){
 				this.$nextTick(() =>{
-					this.select.chosen("destroy");
+
+					if(!init){
+						this.select.chosen("destroy");
+					}
+
 					this.select.chosen(this.options_);
 				});
 			},
@@ -208,7 +224,7 @@
 			});
 
 			// Chosen inicializálása
-			this.select.chosen(this.options_);
+			this.restart(true);
 		}
 	};
 </script>
