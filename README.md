@@ -1,6 +1,6 @@
 # vue-chosen-component
 
-Install:
+Install (vue2):
 ```
 npm install vue-chosen-component
 ```
