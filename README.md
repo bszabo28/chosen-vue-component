@@ -14,7 +14,7 @@ Please check out the example page and repository:
 https://bszabo28.github.io/vue-chosen-component-example/
 
 https://github.com/bszabo28/vue-chosen-component-example/
-  
-You have to configure webpack with extract-text-webpack-plugin!
 
 Original chosen-js github page: https://harvesthq.github.io/chosen/
+
+You have to configure webpack with extract-text-webpack-plugin! It could be tricky on windows os :(
