@@ -2,11 +2,11 @@
 
 Install (vue2):
 ```
-npm install vue-chosen-component
+npm install chosen-vue-component
 ```
 Usage:
 ```
-import Chosen from 'vue-chosen-component';
+import Chosen from 'chosen-vue-component';
 ```
 
 Please check out the example page and repository:
