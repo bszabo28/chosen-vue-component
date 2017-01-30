@@ -11,9 +11,9 @@ import Chosen from 'chosen-vue-component';
 
 Please check out the example page and repository:
 
-https://bszabo28.github.io/vue-chosen-component-example/
+https://bszabo28.github.io/chosen-vue-component-example/
 
-https://github.com/bszabo28/vue-chosen-component-example/
+https://github.com/bszabo28/chosen-vue-component-example/
 
 Original chosen-js github page: https://harvesthq.github.io/chosen/
 
