@@ -7,14 +7,10 @@
 ##########
 
 <template>
-	<!--
-		Inline template segítségével lehet módosítani a kinézetén
-		Bővebben: https://vuejs.org/v2/guide/components.html#Inline-Templates
-	 -->
 	<select
 		:multiple="multiple_"
 		:data-placeholder="dataPlaceholder">
-		<option></option>
+		<option v-if="!multiple"></option>
 		<option
 			v-for="item in list_"
 			:value="item.value"
@@ -175,20 +171,20 @@
 
 			// Csak a komponens által kiváltott változáskor
 			// Fut le
-			changed(e,{selected,deselected}){
+			changed(e,v){
 
 				if(!this.multiple){
 					this.current = [];
 				}
 
-				if(selected){
+				if(v && v.selected){
 					// https://vuejs.org/v2/guide/list.html#Array-Change-Detection
 					// Ennek ellenére nem reaktív !!
-					this.current.push(selected);
+					this.current.push(v.selected);
 				}
 
-				if(deselected){
-					_.remove(this.current,i => i===deselected);
+				if(v && v.deselected){
+					_.remove(this.current,i => i === v.deselected);
 				}
 
 				this.$emit('changed',this.current);
