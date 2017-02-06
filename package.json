@@ -1,0 +1,30 @@
+{
+  "name": "chosen-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Szabó Balázs",
+  "license": "ISC",
+  "devDependencies": {
+    "css-loader": "^0.26.1",
+    "extract-text-webpack-plugin": "^2.0.0-beta.5",
+    "gulp": "^3.9.1",
+    "laravel-elixir": "^6.0.0-15",
+    "laravel-elixir-vue-2": "^0.3.0",
+    "laravel-elixir-webpack-official": "^1.0.10",
+    "style-loader": "^0.13.1",
+    "webpack": "^2.2.0"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.22.0",
+    "breakpoint-sass": "^2.7.1",
+    "connect": "^3.5.0",
+    "serve-static": "^1.11.2",
+    "susy": "^2.2.12",
+    "vue": "^2.1.10",
+    "vue-resource": "^1.0.3"
+  }
+}

@@ -1,0 +1,169 @@
+@import "../../node_modules/susy/sass/susy";
+
+$default: (
+	container: 100%,
+	columns: 1,
+	gutters: 1/4,
+	gutter-position: inside,
+);
+
+$desktop1: (
+	container: 900px,
+	columns: 12,
+	gutters: 1/12,
+	gutter-position: inside,
+);
+
+@include layout($default);
+
+html,body{
+	margin: 0;
+	padding: 0;
+	min-height: 100%;
+}
+
+body{
+	//background-color: #EEEEEE;
+}
+
+h1{
+	padding: 20px 0;
+	margin: 0;
+	clear: both;
+	text-align: center;
+}
+
+h1,label{
+	font-family: 'Slabo 27px', serif;
+	color: #111111;
+}
+
+label,input{
+	font-size: 14px;
+}
+
+input{
+	outline: none;
+}
+
+ul,li{
+	list-style: none;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.container{
+	@include container;
+	padding-top: 120px;
+	padding-bottom: 60px;
+}
+
+.header{
+	position: fixed;
+	top: 0;
+	background-color: white;
+}
+
+.header,.panel{
+	@include span(1);
+}
+
+.control{
+
+	.control-item{
+
+		margin-bottom: 10px;
+		padding: 5px;
+		text-align: justify;
+
+		input,label{
+			vertical-align: middle;
+		}
+
+		label{			
+			span:nth-child(1){
+				text-decoration: underline;
+			}
+
+			span:nth-child(2){
+				display: inline-block;
+				width: 100%;
+				margin-top: 10px;
+			}
+		}
+
+		&:hover{
+			background-color: lighten(lightgray,10);
+			cursor: pointer;
+
+			input,label{
+				cursor: pointer;
+			}
+		}
+	}
+}
+
+.colors{
+		@include span(full);
+
+		li{
+			@include span(1 of 3);
+			@include gutters(0px);
+		}
+}
+
+
+@include susy-breakpoint(1024px,$desktop1){
+
+	.container{
+		@include container;
+		padding-top: 0;
+		
+	}
+
+	.header{
+		@include span(6);
+		@include push(3);
+		position: relative;
+	}
+
+	.panel{
+		@include span(6);
+		@include gutters(50px);
+		margin-top: 50px;
+	}
+
+	.control{
+		ul{
+			max-height: 300px;
+			overflow: auto;
+		}		
+	}
+
+	.colors{
+		@include span(full);
+
+		li{
+			@include span(1 of 4);
+			@include gutters(0px);
+
+			label{
+				width: 100%;
+				color: white;
+				display: inline-block;
+				padding: 10px;
+				box-sizing: border-box;
+				cursor: pointer;	
+			}
+
+			input{
+				display: none;
+
+				&:checked+label{
+					display: none;
+				}
+			}
+		}
+	}	
+}
