@@ -9,7 +9,7 @@ Usage:
 import Chosen from 'chosen-vue-component';
 ```
 
-Please check out the example page and repository:
+Please check out the example page and branch:
 
 https://bszabo28.github.io/chosen-vue-component/
 
