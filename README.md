@@ -1,4 +1,4 @@
-# vue-chosen-component
+# chosen-vue-component
 
 Install (vue2):
 ```
